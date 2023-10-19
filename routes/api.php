@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GetCurrenciesInfoByIsoCodesController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('products',ProductController::class);
+Route::apiResource('customers',CustomerController::class);

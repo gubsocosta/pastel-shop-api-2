@@ -131,7 +131,7 @@ elif [ "$1" == "prod" ]; then
     shift 1
 
     docker compose -f docker compose.yml \
-        -f docker compose.prod.yml \
+        -f docker-compose.prod.yml \
         "$@"
 
 elif [ "$1" == "bin" ]; then
