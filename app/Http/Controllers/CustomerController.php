@@ -11,7 +11,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::paginate();
+        $customers = Customer::all();
         return CustomerResource::collection($customers);
     }
 

@@ -11,8 +11,11 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "nyholm/psr7": "^1.8",
         "predis/predis": "^2.2",
-        "symfony/dom-crawler": "^6.3"
+        "railsware/mailtrap-php": "^1.7",
+        "symfony/dom-crawler": "^6.3",
+        "symfony/http-client": "^6.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
