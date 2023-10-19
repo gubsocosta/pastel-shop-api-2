@@ -13,13 +13,13 @@ Esta aplicação tem como o objetivo gerenciar pedidos de uma pastelaria
 Crie o arquivo `.env`
 
 ```shell
-$ cp .env.example .env
+cp .env.example .env
 ```
 
 Instale as dependências via docker:
 
 ```shell
-$ docker run --rm \
+docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
@@ -30,13 +30,25 @@ $ docker run --rm \
 Suba os containers:
 
 ```shell
-$ ./vendor/bin/sail up --force-recreate -d
+./vendor/bin/sail up --force-recreate -d
 ```
 
 Gere o `app_key` com o comando:
 
 ```shell
-$ ./vendor/bin/sail artisan key:generate
+./vendor/bin/sail artisan key:generate
+```
+Crie o link simbólico para tornar o diretorio de imagens acessível:
+
+```shell
+./vendor/bin/sail artisan storage:link
+```
+
+Execute as migrations:
+```shell
+./vendor/bin/sail schema:dump
+./vendor/bin/sail schema:dump --database=testing --prune
+./vendor/bin/sail artisan migrate
 ```
 
 Execute a aplicação:
@@ -48,19 +60,17 @@ A aplicação estará sendo executada na porta 8000.
 
 Caso queira parar a aplicação, execute o comando abaixo:
 
-
 ```shell
-$ ./vendor/bin/sail artisan stop
+./vendor/bin/sail artisan stop
 ```
-
 
 Para ver a executar dos testes de unidade, execute o comando abaixo:
 
 ```shell
-$ ./vendor/bin/sail test
+./vendor/bin/sail artisan test --testsuite=Feature
 ```
 
 Para remover os containers:
 ```shell
-$ ./vendor/bin/sail down --remove-orphans
+./vendor/bin/sail down --remove-orphans
 ```
