@@ -7,24 +7,28 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 
-class UpdateProductRequest extends FormRequest
+class UpdateCustomerRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => [
+            'name' => 'required',
+            'email' => [
                 'required',
-                'min:3',
-                Rule::unique('products', 'name')->ignore($this->route()->parameter('product'))
+                'email',
+                Rule::unique('customers', 'email')->ignore($this->route()->parameter('customer'))
             ],
-            'price' => 'required|decimal:2|gte:0',
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048'
-
+            'phone_number' => 'required',
+            'date_of_birth' => 'date',
+            'complement' => 'nullable',
+            'address' => 'required',
+            'neighborhood' => 'required',
+            'zipcode' => 'required',
         ];
     }
 
@@ -34,6 +38,6 @@ class UpdateProductRequest extends FormRequest
             'success' => false,
             'message' => 'Validation errors',
             'data' => $validator->errors()
-        ]));
+        ], 422));
     }
 }

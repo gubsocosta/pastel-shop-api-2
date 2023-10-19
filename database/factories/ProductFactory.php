@@ -19,13 +19,10 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->name();
-        $price = fake()->randomFloat(2, 0, 1000);
-        $photo = fake()->image('storage');
         return [
-            'name' => $name,
-            'price' => $price,
-            'photo' => $photo
+            'name' => fake()->name(),
+            'price' => fake()->randomFloat(2, 0, 1000),
+            'photo' => fake()->image('storage')
         ];
     }
 }
