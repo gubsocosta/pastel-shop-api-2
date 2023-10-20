@@ -21,7 +21,7 @@ class ProductResource extends JsonResource
             'price' => (float)$this->price,
             'photo' => env('APP_URL') . Storage::url($this->photo),
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'updated_at' => $this->updated_at
         ];
     }
 }

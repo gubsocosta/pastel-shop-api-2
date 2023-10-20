@@ -44,11 +44,10 @@ Crie o link simbólico para tornar o diretorio de imagens acessível:
 ./vendor/bin/sail artisan storage:link
 ```
 
-Execute as migrations:
+Execute as migrations e seeds:
 ```shell
-./vendor/bin/sail schema:dump
-./vendor/bin/sail schema:dump --database=testing --prune
 ./vendor/bin/sail artisan migrate
+./vendor/bin/sail artisan db:seed
 ```
 
 Execute a aplicação:
